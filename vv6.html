@@ -19,10 +19,7 @@ var sv = getParam("sv");
  <link href="https://www.nuevodevel.com/vdjs/v6/skins/shaka/videojs.min.css" rel="stylesheet" type="text/css" /> 
 <script src="https://www.nuevodevel.com/vdjs/js/related.js"></script>
  <script src="https://www.nuevodevel.com/vdjs/core/7.8/nvideo.min.js"></script> 
-
-
 <body onload="init()">
-
 <div class="media"> 
 <video style="width:100%" id="play" class="video-js vjs-fluid vjs-default-skin" poster="https://www.nuevodevel.com/media/video/oops/poster.webp" controls preload="none" data-setup="{}"><source src="https://stream.nuevodevel.com/video/demo_240.mp4" res="240" label="240p" type="video/mp4"><source src="https://stream.nuevodevel.com/video/demo_360.mp4" res="360" label="360p" type="video/mp4"><source src="https://stream.nuevodevel.com/video/demo_480.mp4" default res="480" label="480p" type="video/mp4"><source src="https://stream.nuevodevel.com/video/demo_720.mp4" res="720" label="720p" type="video/mp4"></video> </video>
 </div>
@@ -30,9 +27,6 @@ var sv = getParam("sv");
     function play(link){if(link.indexOf('.html')!=-1){var xmlhttp=new XMLHttpRequest();xmlhttp.open("GET",link,!1);xmlhttp.send();src=xmlhttp.responseText}else src=link;player=videojs("play");player.ready(function(){player.src({src:src,type:"application/x-mpegURL"})});player.play()}
 		    function reload() {if (player.paused() && player.error_ != null)play(sv);}
 		    function init() { play(sv); setInterval(function() {reload()}, 3000);} </script>
-
-
-
 <div id="videojs">
 </div>
 <style>
