@@ -27,7 +27,7 @@ var sv = getParam("sv");
   	<script>
     function play(link){if(link.indexOf('.html')!=-1){var xmlhttp=new XMLHttpRequest();xmlhttp.open("GET",link,!1);xmlhttp.send();src=xmlhttp.responseText}else src=link;player=videojs("play");player.ready(function(){player.src({src:src,type:"application/x-mpegURL"})});player.play()}
 		    function reload() {if (player.paused() && player.error_ != null)play(sv);}
-		    function init() { play(sv); setInterval(function() {reload()}, 3000);} </script>
+		    function init() { play(sv); setInterval(function() {reload()}, 1000);} </script>
 <div id="videojs">
 </div>
 <style>
