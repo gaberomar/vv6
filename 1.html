@@ -59,6 +59,21 @@ var sv = getParam("sv");
     
     },2000)
   }
+	
+	 player.vjs.on('error', function() {
+                                    $.ajax({
+                                        url: "https://geoip-db.com/jsonp",
+                                        jsonpCallback: "callback",
+                                        dataType: "jsonp",
+                                        success: function( location ) {
+                                            if(location.country_code != 'TR'){
+                                                var modal = player.vjs.createModal('Uluslararası müsabakalardaki telif kısıtlamaları nedeniyle Türkiye sınırları dışında izlenememektedir.');
+                                                modal.addClass('vjs-my-fancy-modal');
+                                            }
+                                        }
+                                    });
+                                    //var error = player.vjs.error();
+                                });
 </script>
 
 <style>
