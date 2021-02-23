@@ -1,98 +1,59 @@
 
-
-<meta name="referrer" content="no-referrer">
-<link href="http://play.nhanhtv.com/s/videojs/video-js.min.css" rel="stylesheet">
-<script src="http://play.nhanhtv.com/s/videojs/videojs-ie8.min.js"></script>
-<script src="http://play.nhanhtv.com/s/videojs/video.js"></script>
-<script src="http://play.nhanhtv.com/s/vjs-hls.min.js"></script>
-<script>
+<div id="playerDiv" style="width: 100%; height: 100%"></div>
+<script src="https://demo.nanocosmos.de/nanoplayer/api/release/nanoplayer.4.min.js?20200819"></script>
+<script> 
 function getParam ( sname )
 {
-  var params = location.search.substr(location.search.indexOf("?")+1);
-  var sval =  params.replace("sv=", "");
-  
-  return sval;
+ var params = location.search.substr(location.search.indexOf("?")+1);
+ var sval =  params.replace("sv=", "");
+ return sval;
 }
 var sv = getParam("sv");
-
 </script>
-<body onload="init()">
+<script>
+var player;
+var config = {
+	"source": {
+		"entries": [
+			{
+				"index": 0,
+				"h5live": {
+					"server": {
+						"websocket": "wss://bintu-h5live.nanocosmos.de:443/h5live/stream/stream.mp4",
+						"hls": sv,
+						"progressive": "https://bintu-h5live.nanocosmos.de:443/h5live/http/stream.mp4"
+					},
+					"rtmp": {
+						"url": "rtmp://bintu-play.nanocosmos.de:1935/play",
+						"streamname": "C38zN-wrDIF"
+					}
+				}
+			}
+		],
+		"options": {
+			"adaption": {
+				"rule": "deviationOfMean2"
+			},
+			"switch": {}
+		},
+		"startIndex": 0
+	},
+	"playback": {
 
-	<div id="videojs">
-		<video id="streaming" autoplay preload="auto" height="100%" width="100%" class="video-js" controls data-setup='{"language": "vi"}'></video>
-	</div>
-	
-<script>	
- var i = 0;
-	
-	function play(link) {
-			 if(link.indexOf('type=get')!=-1){var xmlhttp=new XMLHttpRequest();xmlhttp.open("GET",link,!1);xmlhttp.send();src=xmlhttp.responseText}else src=link;
-	    player = videojs("streaming");
-                        player.ready(function()
-                                     {
-                          player.src({
-                          src: sv,
-                            type:"application/x-mpegURL"
-                        })
-                                               });
-                        player.play()}
-	function reload(i)
-  {
-    if(player.paused()
-       &&player.error_!=null)
-    {
-      if(i<link.length)
-      {
-        play(link[i])
-      }else
-      {
-        clearInterval(interval);
-        document.write('<iframe id="Myiframe" src="http://raw.githack.com/gaberomar/vv6/master/1.html?sv=" scrolling="no" height="100%" allowfullscreen="true" width="100%" frameborder="0"></iframe>')}}
-  }
-	function init()  {
- 
-    var i=0;link=["",""];
-    play(link[i]);
-    interval=setInterval(function()  {
-                        
-      i++;reload(i)
-    
-    },2000)
-  }
-	
-	 player.vjs.on('error', function() {
-                                    $.ajax({
-                                        url: "https://geoip-db.com/jsonp",
-                                        jsonpCallback: "callback",
-                                        dataType: "jsonp",
-                                        success: function( location ) {
-                                            if(location.country_code != 'TR'){
-                                                var modal = player.vjs.createModal('Uluslararası müsabakalardaki telif kısıtlamaları nedeniyle Türkiye sınırları dışında izlenememektedir.');
-                                                modal.addClass('vjs-my-fancy-modal');
-                                            }
-                                        }
-                                    });
-                                    //var error = player.vjs.error();
-                                });
+		"autoplay": true,
+		"automute": false,
+		"muted": false,
+		"flashplayer": "https://demo.nanocosmos.de/nanoplayer/nano.player.swf"
+	}
+};
+document.addEventListener('DOMContentLoaded', function () {
+    player = new NanoPlayer("playerDiv");
+    player.setup(config).then(function (config) {
+        console.log("setup success");
+        console.log("config: " + JSON.stringify(config, undefined, 4));
+    }, function (error) {
+        alert(error.message);
+    });
+});
 </script>
-
-<style>
-	.video-js {
-		width: 100%;
-		height: 99%;
-	}
-	body {
-		text-align: center;
-		margin: 0px;
-	}
-	#videojs {
-		width: 100%;
-		height: 99%;
-	}.streaming-dimensions{
-				width: 100% !important;
-		height: 99% !important;
-	}
-</style>
-</body>
-<span style='position:absolute; bottom: 35px!important; left: 10px!important; max-bottom: 10px!important; max-width: 170%!important; width: 22%!important; font-size: 13px; font-weight: bold;color: #ff0;'>
-<img style= 'left: 10px!important; max-height: 50px!important; max-width: 100%!important; width: 90%!important;' src='http://1.bp.blogspot.com/-6Utq5JU_l2w/YCAo8gB0x7I/AAAAAAAALZU/YJxOQHkvIywpU4znsCgYEvIsc-U8ijY1wCK4BGAYYCw/s1600/2.png'></span>
+</script>
