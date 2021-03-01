@@ -1,7 +1,13 @@
-<html>
-<style> video {object-fit:fill}</style><style>html,body{margin:0;}</style>
-<style> .video-js {width: 100%; height: 100%;} #videojs {width: 100%; height: 100%;}</style>
-<!---<meta name="referrer" content="no-referrer">--->
+
+<style>
+*{margin:0;padding:0;}body{background-color:#000;color:#fff;height:100%;width:100%;overflow:hidden;position:absolute;}
+body{text-align: center;margin: 0px;}
+.streaming-dimensions{width: 100% !important;height: 100% !important;}
+
+.video-js {width: 100%;	height: 100%;}
+#videojs {width: 100%;height: 100%;}
+
+</style>
 <script>
 function getParam ( sname )
 {
@@ -13,51 +19,141 @@ function getParam ( sname )
 var sv = getParam("sv");
 
 </script>
-<link href="http://sv.tvmienphi.tv/videojs/video-js.min.css" rel="stylesheet">
-<script src="http://sv.tvmienphi.tv/videojs/videojs-ie8.min.js"></script>
-<script src="http://sv.tvmienphi.tv/videojs/video.min.js"></script>
-<script src="http://sv.tvmienphi.tv/videojs/videojs-contrib-hls.min.js"></script>
-<script src="http://sv.tvmienphi.tv/videojs/vjs-hls.min.js"></script>
-<link href="http://www.tvmienphi.tv/assets/player/plugins/tube-skin/videojs-tube.min.css" rel="stylesheet"/>
-<body onLoad="init()"> 
+<meta name="referrer" content="no-referrer">
+<link href="https://rawgit.com/xbdinfo/file/5ca03205/video-js.min.css" rel="stylesheet">
+<script src="https://rawgit.com/xbdinfo/file/5ca03205/videojs-ie8.min.js"></script>
+<script src="https://rawgit.com/xbdinfo/file/5ca03205/video.min.js"></script>
+<script src="https://rawgit.com/xbdinfo/file/5ca03205/videojs-contrib-hls.min.js"></script>
+<script src="https://rawgit.com/xbdinfo/file/5ca03205/vjs-hls.min.js"></script>
+
+
+<body onLoad="init()">
 <div id="videojs">
-<video id="play" class="video-js vjs-big-play-centered skin-blue" controls preload="none" width="100%" height="100%" data-setup="{}">
-    <!-- worning text if needed -->
-            <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
-  </video>
-</div>
-  	<script>
-    function play(link){
-if(link.indexOf('.html')!=-1){
+<video id="restre" autoplay preload="auto" height="100%" width="100%" class="video-js" controls data-setup='{"language": "vi"}'></video></div>
+<script>	
+	function play(link){
+if(link.indexOf('.php')!=-1){
 var xmlhttp=new XMLHttpRequest();
 xmlhttp.open("GET",link,!1);
 xmlhttp.send();
-src=xmlhttp.responseText}
-else
- src=link;
-player=videojs("play");
+src=xmlhttp.responseText
+}else 
+src=link;player=videojs("restre");
 player.ready(function(){
 player.src({
 src:sv,
 type:"application/x-mpegURL"
 })
 });
-player.play()
-}
-function reload() {
-if (player.paused() &&
-player.error_ != null)
-play('sv');
-}
- function init() { 
-play('sv'); 
-setInterval(function() {
-reload()}, 
-3000
-);
-} 
+player.play()}
+function reload(i){
+if(player.paused()&&player.error_!=null){
+if(i<link.length){play(kenh[i])}else{clearInterval(interval);
+document.write('<iframe id="Myiframe" src="" scrolling="no" height="100%" allowfullscreen="true" width="100%" frameborder="0"></iframe>')}}}
+function init(){
+var i=0;kenh=[sv,];
+play(kenh[i]);
+interval=setInterval(
+function(){i++;reload(i)},2000)}
 </script>
-</body>
-</html>     
-<span style='position:absolute; bottom: 35px!important; left: 10px!important; max-bottom: 10px!important; max-width: 170%!important; width: 22%!important; font-size: 13px; font-weight: bold;color: #ff0;'>
+<style> 
+/*! videojs-tube - 2016-08-27
+ * Copyright (c) 2016 CodeCanyon
+ * Author by FaceTheme
+ * @version 1.0.0 support videojs-5*/
+.video-js {
+    font-size: 13px
+}
+.video-js.vjs-fullscreen {
+    font-size: 17px
+}
+.vjs-big-play-centered .vjs-big-play-button {
+    font-size: 5em;
+    line-height: 1.34em;
+    height: 1.4em;
+    width: 1.4em;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    margin-top: -.7em;
+    margin-left: -.7em
+}
+.vjs-big-play-centered .vjs-progress-control {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: auto;
+    -webkit-transform: translate(0, -100%);
+    transform: translate(0, -100%)
+}
+.video-js .vjs-progress-control:hover .vjs-progress-holder,
+.video-js:hover .vjs-progress-holder {
+    font-size: 2em
+}
+.vjs-big-play-centered .vjs-time-divider {
+    display: block
+}
+.vjs-big-play-centered .vjs-current-time {
+    display: block;
+    padding-right: 0
+}
+.vjs-big-play-centered .vjs-remaining-time {
+    margin-right: auto;
+    padding-left: 0
+}
+.vjs-big-play-centered .vjs-control-bar {
+    background-color: rgba(0, 0, 0, .2)
+}
+/*.vjs-big-play-centered .vjs-play-progress {
+    background-color: #f1c40f
+}*/
+
+.skin-blue .vjs-play-progress {
+    background-color: #0088CC
+}
+
+.skin-green .vjs-play-progress {
+    background-color: #8bc34a
+}
+
+.skin-red .vjs-play-progress {
+    background-color: #f00
+}
+
+.skin-purple .vjs-play-progress {
+    background-color: #673ab7
+}
+
+.skin-yellow .vjs-play-progress {
+    background-color: #ffc107
+}
+
+.vjs-big-play-centered .vjs-play-progress:before {
+    font-size: 1em;
+    top: -.34777777777em
+}
+.vjs-big-play-centered .vjs-load-progress {
+    background-color: rgba(255, 255, 255, .4)
+}
+.vjs-big-play-centered .vjs-slider {
+    background-color: rgba(255, 255, 255, .2)
+}
+.vjs-big-play-centered .vjs-play-control:before,
+.vjs-big-play-centered .vjs-fullscreen-control:before {
+    font-size: 2.3em;
+    line-height: 1.33
+}
+.video-js .vjs-live-control{
+	color: red;
+}
+
+</style>
+</body><span style='position:absolute; bottom: 35px!important; left: 10px!important; max-bottom: 10px!important; max-width: 170%!important; width: 22%!important; font-size: 13px; font-weight: bold;color: #ff0;'>
 <img style= 'left: 10px!important; max-height: 50px!important; max-width: 100%!important; width: 90%!important;' src='http://1.bp.blogspot.com/-6Utq5JU_l2w/YCAo8gB0x7I/AAAAAAAALZU/YJxOQHkvIywpU4znsCgYEvIsc-U8ijY1wCK4BGAYYCw/s1600/2.png'></span>
+
+
+
+
