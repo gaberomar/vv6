@@ -21,7 +21,10 @@ var sv = getParam("sv");
 <link href="http://www.tvmienphi.tv/assets/player/plugins/tube-skin/videojs-tube.min.css" rel="stylesheet"/>
 <body onLoad="init()"> 
 <div id="videojs">
-<video id="play" class="video-js vjs-big-play-centered skin-blue" controls preload="none" width="100%" height="100%" poster="/videojs/loading.gif" data-setup="{}"></video>
+<video id="play" class="video-js vjs-big-play-centered skin-blue" controls preload="none" width="100%" height="100%" poster="/videojs/loading.gif" data-setup="{}">
+    <!-- worning text if needed -->
+            <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+  </video>
 </div>
   	<script>
     function play(link){
