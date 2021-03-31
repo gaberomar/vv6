@@ -1,20 +1,114 @@
 
 
-<meta name="robots" content="noindex, nofollow">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<style type="text/css">
-    body {
-	margin-left: 0px;
-	margin-top: 0px;
-	margin-right: 0px;
-	margin-bottom: 0px;
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+    <head>
+        <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta name="robots" content="noindex, nofollow">
+                            <title> tornadox_Player1</title>
+	    	<script>
+function getParam ( sname )
+{
+  var params = location.search.substr(location.search.indexOf("?")+1);
+  var sval =  params.replace("sv=", "");
+  
+  return sval;
 }
-    </style>
-<div style="width:100%;Max-width:100%;">
-<iframe width="100%" height="98%" src="https://www.youtube.com/embed/" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen scrolling="false"></iframe>
-<span style='position:absolute; bottom: 50px!important; left: 15px!important; max-bottom: 20px!important; max-width: 170%!important; width: 22%!important; font-size: 13px; font-weight: bold;color: #ff0;'>
+var sv = getParam("sv");
+
+</script>
+                                     <script src="https://cdn.radiantmediatechs.com/rmp/5.9.0/js/rmp-shaka.min.js"></script>
+                                     <script src="https://cdn.radiantmediatechs.com/rmp/5.11.6/js/rmp-hlsjs.min.js"></script>
+                                     
+
+                                   
+                                     
+                            </head>
+                            <body>
+                             
+ <style>
+                                html,
+                                body {
+                                    height: 100%;
+                                    width: 100%;
+                                    background-color: #000;
+                                    overflow: hidden;
+                                    margin: 0;
+                                    padding: 0;
+                                }
+                                .rmp-overlay-button .rmp-i-play {
+                                    font-size: 120px !important;
+                                }
+
+                                .rmp-i-play:hover, rmp-i-volume:hover, rmp-i-pause:hover {
+                                    color: #552a86 !important;  
+                                }
+
+                                .rmp-module {
+                                    top: 30px !important;
+                                }
+
+                                .rmp-module-overlay-icons {
+                                    top: 30px !important;
+                                }
+
+                              
+                            </style>
+<div id="rmpPlayer"></div>
+
+
+
+
+                                <script>
+								     function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+        vars[key] = value;
+    });
+    return vars;
+}
+var live = getUrlVars()["live"];
+var ch = getUrlVars()["channel"];
+
+                                    var src = {
+                                        hls: sv,
+                                    };
+
+                                    var settings = {
+                                        licenseKey: 'Y21jZW9haWFtcSEqXyVlazBnZW83MDJla2Nza3Y/cm9tNWRhc2lzMzBkYjBBJV8q',
+                                        iframeMode: true,
+                                        iframeAllowed: true,
+                                        sharing: true,
+                                        skin: 's3',
+                                        src: src,
+                                        pip: true,
+                                        poster: '',
+                                        logo: '-',
+                                        logoLoc: '',
+                                        logoPosition: 'bottom',
+                                        logoWatermark: 'false',
+                                        mute: 'false',
+                                        isLive: true,
+                                        hlsJSMaxBufferLength: 12,
+                                        hlsJSLiveSyncDuration: 3,
+                                        gaTrackingId: '',
+                                        gaCategory: '',
+                                        gaLabel: '',
+                                        gaEvents: ['context', 'ready', 'playerstart', 'error', 'adimpression', 'adloadererror', 'aderror']
+                                    };
+                                    var elementID = 'rmpPlayer';
+                                   
+                                    var rmp = new RadiantMP(elementID);
+                                    rmp.init(settings);
+                                    
+
+                                </script>
+
+                      
+                            </body><span style='position:absolute; bottom: 30px!important; left: 10px!important; max-bottom: 10px!important; max-width: 170%!important; width: 22%!important; font-size: 13px; font-weight: bold;color: #ff0;'>
 <img style= 'left: 10px!important; max-height: 50px!important; max-width: 100%!important; width: 90%!important;' src='http://1.bp.blogspot.com/-6Utq5JU_l2w/YCAo8gB0x7I/AAAAAAAALZU/YJxOQHkvIywpU4znsCgYEvIsc-U8ijY1wCK4BGAYYCw/s1600/2.png'></span>
-</div>
-<script type="text/javascript">(function(){window['__CF$cv$params']={r:'632f28086c10ee1b',m:'f2f5f1e2243dd0559389f1fbc2b10034586ca73c-1616245572-1800-AVv9vrlVgXwkzZFCtQtOwdqqcrW10Fqm/9VWDJw+tKG7m/sr+JkDYlvboOvAyf0KPACXsyZog+WdttPeQ38oqz1QmMKeCuv9woke8Hv/LHH1S+HnrXMQdJhCFqNr8e5KI50XhBEgey5p4IZhFnr+aps=',s:[0x2bdd760aa2,0xac45e165b1],}})();</script>
 
 
+
+                            </html>
