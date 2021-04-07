@@ -37,9 +37,9 @@ var sv = getParam("sv");
 
 </script>
 	 
-<script type="text/javascript" src="https://cdn.jsdelivr.net/clappr/latest/clappr.min.js"></script>
-<script type="text/javascript" src="http://cdn.jsdelivr.net/clappr.rtmp/latest/rtmp.min.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/video-dev/clappr-rtmp-plugin@latest/dist/rtmp.min.js">
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/clappr/latest/clappr.min.js"></script>
+  <script type="text/javascript" src="http://cdn.jsdelivr.net/clappr.rtmp/latest/rtmp.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/video-dev/clappr-rtmp-plugin@latest/dist/rtmp.min.js">
 	 <style>
 	#vid{
     z-index: 10;
@@ -98,11 +98,12 @@ player = new Clappr.Player({
 	watermarkLink: 'http://www.koraglive.cf',
 	allowUserInteraction: false,
 	persistConfig: false,
-	mediacontrol: {seekbar: "#39acb3", buttons: "#39acb3"},     
-        plugins: [
-        RTMP, ErrorPlugin
+	mediacontrol: {seekbar: "#00007f", buttons: "#00007f"},      
+
+    plugins: [
+      RTMP, ErrorPlugin
             ],
-        rtmpConfig: {
+   rtmpConfig: {
         swfPath: 'https://cdn.jsdelivr.net/clappr.rtmp/latest/assets/RTMP.swf',
         scaling:'stretch',
         playbackType: 'live',
@@ -143,7 +144,7 @@ player.core.mediaControl.toggleFullscreen();
 //player.getPlugin('poster').el.classList.add('psdrddd');
 
 }
-},
+}
 setTimeout(plstst, 39000);
 
 player.on(Clappr.Events.PLAYER_STOP, playerStop);
