@@ -1,11 +1,13 @@
 
 
-<html>
-<head>
+ <html><head>
+<style id='page-skin-1' type='text/css'><!--
+*{margin:0; padding:0; }
+#player{width: 100vw; height: 100vh;}
+--></style> 
 <style> video {object-fit:fill}</style><style>html,body{margin:0;}</style>
-<style> .video-js {width: 100%; height: 100%;} #videojs {width: 100%; height: 100%;}</style>
+<style> .video-js {width: 100%; height: 100%;} #videojs {width: 100%; height: 100%;}</style></head>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<script>
 function getParam ( sname )
 {
@@ -17,10 +19,146 @@ function getParam ( sname )
 var sv = getParam("sv");
 
 </script>
+<script>
+  function errorPlaying(){
+    url = "/stream/6/98357.html";
+    var a = document.createElement("a");
+    if (a.click) {
+        a.setAttribute("href", url);
+        a.setAttribute("target", "_self");
+        a.style.display = "none";
+        document.body.appendChild(a);
+        a.click();
+    } else {
+        location.href = url;
+    }
 
-	 <div id="overlay"></div>
+  }
 
-	<script>
+</script>
+	 
+  
+<script type="text/javascript" src="https://cdn.jsdelivr.net/clappr/latest/clappr.min.js"></script>
+      <script type="text/javascript" src="http://cdn.jsdelivr.net/clappr.rtmp/latest/rtmp.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/video-dev/clappr-rtmp-plugin@latest/dist/rtmp.min.js">
+	 <style>
+	#vid{
+    z-index: 10;
+    position: absolute!important;
+    top: 0px;
+    left: 0px;
+    width: 100%!important;
+    height: 100%!important;
+}
+.container {
+    position: relative;
+}
+
+.vjs-error .vjs-error-display .vjs-modal-dialog-content {
+	display:none!important;
+}
+
+</style>
+	
+<script type="text/javascript">
+function getParam ( sname )
+{
+  var params = location.search.substr(location.search.indexOf("?")+1);
+  var sval =  params.replace("sv=", "");
+  return sval;
+}
+var sv = getParam("sv");
+</script>
+
+<div style="width: 100%;">
+<body style="margin:0px;padding:0px;overflow:hidden">
+
+<div class='player-container' id='vid'></div>
+	
+  <script>
+var ErrorPlugin=Clappr.ContainerPlugin.extend({name:"error_plugin",background:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAoAAAAFoBAMAAAA1HFdiAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAG1BMVEX5+fn//wAA//8A/wD/AP//AAAAAP8XFxf///8H5gWfAAAAAWJLR0QIht6VegAAAAd0SU1FB98IBRIsAXmGk48AAAI5SURBVHja7dJBDYBADADBs4AFLGABC1iohbOPhv1BMvu+NLlp10odqTN1pe7Uk5pQ8wMIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECDA/wKWxzM71T7ZZrfltNnppgACBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAL8B+ALjSfYzPnmdzgAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAxNS0wOC0wNVQxODo0NDowMSswMTowMCL95a4AAAAldEVYdGRhdGU6bW9kaWZ5ADIwMTUtMDgtMDVUMTg6NDQ6MDErMDE6MDBToF0SAAAAAElFTkSuQmCC",bindEvents:function(){this.listenTo(this.container,Clappr.Events.CONTAINER_ERROR,this.onError)},hide:function(){this._err&&this._err.remove()},show:function(){var A=Clappr.$;this.hide();var g=this.options.errorPlugin&&this.options.errorPlugin.timeToExpires?this.options.errorPlugin.timeToExpires:10,t=this.options.errorPlugin&&this.options.errorPlugin.text?this.options.errorPlugin.text:" موقع : كوره جي لايف";this._err=A("<div>").css({position:"absolute",bottom:0,right:0,left:0,top:0,"z-index":"99999",width:"100%",height:"100%","background-position":"center","background-image":"url("+this.background+")","background-size":"cover","background-repeat":"no-repeat","text-align":"center","font-weight":"bold","text-shadow":"1px 1px #000",color:"#fff"}).append(A("<div>").css({position:"absolute",bottom:0,right:0,left:0,top:0,background:"rgb(0,0,0,0.7)"}).append(A("<h2>").text(t).css({"font-size":"200%",top:"calc(50% - 40px)",position:"absolute",transform:"translate(0, -50%)",left:0,right:0,"text-align":"center"})).append(A("<p>").html(' <span class="retry-counter">'+g+"</span>  بث مباشر لجميع المبارايات ").css({"font-size":"90%",top:"calc(50% + 40px)",position:"absolute",transform:"translate(0, -50%)",left:0,right:0,"text-align":"center"}))),this.container&&this.container.$el.prepend(this._err)},onError:function(A){var g,t,o;this.container&&(this.show(),this.container.getPlugin("click_to_pause").disable(),t=this.options.errorPlugin&&this.options.errorPlugin.timeToExpires?this.options.errorPlugin.timeToExpires:10,(o=function(){if(clearTimeout(g),0===t)return this.container.getPlugin("click_to_pause").enable(),this.options.errorPlugin&&this.options.errorPlugin.onRetry?void this.options.errorPlugin.onRetry(A):(this.container.stop(),void this.container.play());$(".retry-counter").text(t),t--,g=setTimeout(o,1e3)}.bind(this))())}});  
+if (window.peer5) window.peer5.configure({p2p: true});
+
+player = new Clappr.Player({
+        source: sv,
+        fullscreen: false,
+        mimeType: 'application/x-mpegURL',
+        autoPlay: true, 
+        mute: false, 
+        hideVolumeBar: true,
+	loop: true, 
+        height: '100%',
+        width: '100%',
+	playback: {
+        playInline: 'playsinline'
+            },
+	
+        parentId: '#vid',
+	watermark: "http://1.bp.blogspot.com/-6Utq5JU_l2w/YCAo8gB0x7I/AAAAAAAALZU/YJxOQHkvIywpU4znsCgYEvIsc-U8ijY1wCK4BGAYYCw/s1600/2.png", 				
+	position: 'bottom-left',
+	watermarkLink: 'http://www.koraglive.cf',
+	allowUserInteraction: false,
+	persistConfig: false,
+	mediacontrol: {seekbar: "#00007f", buttons: "#00007f"},     
+
+    plugins: [
+      RTMP, ErrorPlugin
+            ],
+  rtmpConfig: {
+        swfPath: 'dist/assets/RTMP.swf',
+        scaling:'stretch',
+        playbackType: 'live',
+        bufferTime: 1,
+        startLevel: 0,
+        switchRules: {
+            "SufficientBandwidthRule": {
+                "bandwidthSafetyMultiple": 1.15,
+                "minDroppedFps": 2
+            },
+            "InsufficientBufferRule": {
+                "minBufferLength": 2
+            },
+            "DroppedFramesRule": {
+                "downSwitchByOne": 10,
+                "downSwitchByTwo": 20,
+                "downSwitchToZero": 24
+            },
+            "InsufficientBandwidthRule": {
+                "bitrateMultiplier": 1.15
+            }
+        }
+    },
+	 events: {
+              onError: function(e) { errorPlaying() },			  		  
+            }
+         });
+
+function plstst(){
+	var ua = navigator.userAgent.toLowerCase();
+	      
+if(ua.indexOf("iphone") != -1 || ua.indexOf("ipad") != -1){
+//player.pause ();	
+//player.getPlugin('poster').el.classList.add('psdrddd');
+}else {
+//player.pause ();
+player.core.mediaControl.toggleFullscreen();
+//player.getPlugin('poster').el.classList.add('psdrddd');
+
+}
+}
+setTimeout(plstst, 39000);
+
+player.on(Clappr.Events.PLAYER_STOP, playerStop);
+               function playerStop(){
+               location.reload();
+               } 
+  player.setVolume(100); // 1%
+               player.play();
+
+  
+  </script>
+
+<script>
   function errorPlaying(){
     url = "";
     var a = document.createElement("a");
@@ -36,40 +174,11 @@ var sv = getParam("sv");
 
   }
 
-</script> 
-  
-<script type="text/javascript" src="https://cdn.jsdelivr.net/clappr/latest/clappr.min.js"></script>
-      <script type="text/javascript" src="http://cdn.jsdelivr.net/clappr.rtmp/latest/rtmp.min.js"></script>
-      <meta name="referrer" content="no-referrer" />
-	<script>
-function getParam ( sname )
-{
-  var params = location.search.substr(location.search.indexOf("?")+1);
-  var sval =  params.replace("sv=", "");
-  
-  return sval;
-}
-var sv = getParam("sv");
-
 </script>
+	
+<div style='clear: both;'></div>
+<div class='no-items section' id='Clappr play'></div> 
 
-</head>
-<body>
-	
-  <div id="player"></div>
-  <script>
-    var player = new Clappr.Player({source: sv, parentId: '#player', mimeType: 'application/x-mpegURL',
-
- playInline: true, autoPlay:true, mediacontrol: {seekbar: "#fffff", buttons: "#fffff"},  watermark: "http://1.bp.blogspot.com/-6Utq5JU_l2w/YCAo8gB0x7I/AAAAAAAALZU/YJxOQHkvIywpU4znsCgYEvIsc-U8ijY1wCK4BGAYYCw/s1600/2.png", position: "bottom-left", width: '100%', height: '100%'
-});
-	 player.on(Clappr.Events.PLAYER_STOP, playerStop);
-               function playerStop(){
-               location.reload();
-                }  
-  </script>
-	
-	
-	
 <style>
 /* <![CDATA[ */
 
