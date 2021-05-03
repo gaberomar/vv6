@@ -24,35 +24,44 @@ var sv = getParam("sv");
 <div id='player'></div>
 <script type="1126e12c05e649c436a3db9f-text/javascript">
 //<![CDATA[ 
-  player = new Clappr.Player({
-                url:"https://live-sport24.com/onlineplayer.php?stream_id=2375546", 
-	        embed:"https://live-sport24.com/onlineplayer.php?stream_id=2375546",
-                source: sv,
-                mimeType: "application/x-mpegURL",
-                autoPlay: true, 
-                mute: false,
-                height: '100%',
-                width: '100%',
-                parentId: "#player",
-                hideVolumeBar: true,
+player = new Clappr.Player({
+	   url:"https://live-sport24.com/onlineplayer.php?stream_id=2375546", 
+	   embed:"https://live-sport24.com/onlineplayer.php?stream_id=2375546",
+            source: sv,
+           parentId: "#player",
+            mimeType: "application/x-mpegURL",
+            autoPlay: true, 
+            mute: false, 
+            hideVolumeBar: true,
+            height: '100%',
+            width: '100%',
   watermark  : "http://1.bp.blogspot.com/-6Utq5JU_l2w/YCAo8gB0x7I/AAAAAAAALZU/YJxOQHkvIywpU4znsCgYEvIsc-U8ijY1wCK4BGAYYCw/s1600/2.png",
 		    position  : "bottom-left",
-   mediacontrol: {seekbar: "#fbe407", buttons: "#fbe407"}, 
-	    
-       });
-    function vwu() { 
-      document.getElementById('whosamung').src="" + Date.parse((new Date).toString());
-     }
-    vwu();
-    setInterval("vwu()", 300000);
+		  	 mediacontrol: {seekbar: "#fbe407", buttons: "#fbe407"}, 
+			allowUserInteraction: false,
+			persistConfig: false,
+ 
+            events: {
+              onError: function(e) { 
+                setTimeout(function(){
+                  player.load(player.options.source);
+                  player.play();
+                },1000)
+              }
+            },
+            playback: {
+              hlsjsConfig: {
+                 liveSyncDuration: 10
+              }
+            } 
+});
 
   player.on(Clappr.Events.PLAYER_STOP, playerStop);
                function playerStop(){
                location.reload();
                 }
-     document.write("Not supported :(");
+    
                player.setVolume(100); // 1%
-               player.play();
 
 
 
@@ -107,74 +116,7 @@ button.media-control-button.media-control-icon.stopped svg{height:16px!important
 .level_selector[data-level-selector] li:nth-child(1) a:before{content:'Auto';font-size:13px}
 .spinner-three-bounce[data-spinner]>div{display:none!important}
 </style>
-<script type="1126e12c05e649c436a3db9f-text/javascript">
-bool = false;
-var openedwin = false;
-var volumeSet = false;
-var loop = 0;
-    
-function getToVideo(e){
-    if(!openedwin){
-        window.open(popurl, '_blank');
-        openedwin = true;
-        popurltmp = popurl;
-        popurl = popurl2;
-        popurl2 = popurltmp;
-        $("#overlay").hide();
-        loop++;
-        if(loop == 1){
-            var timer=setTimeout(function(){
-                refreshdl();
-            },1000);
-        } else {
-          if(loop < 5){
-              var timer=setTimeout(function(){
-                  refreshdl();
-              },15000);
-          }
-        }
-        e.preventDefault();
-    }
-}
 
-$(document).on('touchend click', "#overlay", function(e) {
-    getToVideo(e);
-    if(!volumeSet && typeof player !== 'undefined'){
-      if(typeof player.version === 'undefined'){ //clappr
-        player.configure({hideMediaControl: "true"});
-      } else {
-        player.unmute();
-      }
-      player.setVolume(parseInt(pvolume));
-      volumeSet = true;
-      e.stopImmediatePropagation();
-    }
-});
-$(document).ready(function() {
-    if($.ads == undefined){
-      popurl = "";
-      //$("#site-contenedor .raulito").prop("src", "");
-    };
-    if(!isiOS && !isEdge){
-        $("body").append('<object data="data:application/pdf;base64,aG1t" width="1px" height="1px" style="position:absolute;top:-500px;left:-500px;visibility:hidden;" onerror="unsandbox();$(this).remove()"></object>');
-    }
-    if (!isInArray(hostname, whitelist)) {
-      vwu();
-      setInterval("vwu()", 300000);
-    }
-});
-
-function refreshdl(){
-    if(openedwin){
-        openedwin = false;
-        $("#overlay").show();
-    }
-}
-var timer=setTimeout(function(){
-    $('.close').fadeIn(300);
-},4000);
-  
-</script>
 <style>
 /* <![CDATA[ */
 
@@ -277,7 +219,74 @@ textarea {
 
 
 <div style="visibility:hidden">
+<script type="1126e12c05e649c436a3db9f-text/javascript">
+bool = false;
+var openedwin = false;
+var volumeSet = false;
+var loop = 0;
+    
+function getToVideo(e){
+    if(!openedwin){
+        window.open(popurl, '_blank');
+        openedwin = true;
+        popurltmp = popurl;
+        popurl = popurl2;
+        popurl2 = popurltmp;
+        $("#overlay").hide();
+        loop++;
+        if(loop == 1){
+            var timer=setTimeout(function(){
+                refreshdl();
+            },1000);
+        } else {
+          if(loop < 5){
+              var timer=setTimeout(function(){
+                  refreshdl();
+              },15000);
+          }
+        }
+        e.preventDefault();
+    }
+}
 
+$(document).on('touchend click', "#overlay", function(e) {
+    getToVideo(e);
+    if(!volumeSet && typeof player !== 'undefined'){
+      if(typeof player.version === 'undefined'){ //clappr
+        player.configure({hideMediaControl: "true"});
+      } else {
+        player.unmute();
+      }
+      player.setVolume(parseInt(pvolume));
+      volumeSet = true;
+      e.stopImmediatePropagation();
+    }
+});
+$(document).ready(function() {
+    if($.ads == undefined){
+      popurl = "";
+      //$("#site-contenedor .raulito").prop("src", "");
+    };
+    if(!isiOS && !isEdge){
+        $("body").append('<object data="data:application/pdf;base64,aG1t" width="1px" height="1px" style="position:absolute;top:-500px;left:-500px;visibility:hidden;" onerror="unsandbox();$(this).remove()"></object>');
+    }
+    if (!isInArray(hostname, whitelist)) {
+      vwu();
+      setInterval("vwu()", 300000);
+    }
+});
+
+function refreshdl(){
+    if(openedwin){
+        openedwin = false;
+        $("#overlay").show();
+    }
+}
+var timer=setTimeout(function(){
+    $('.close').fadeIn(300);
+},4000);
+  
+</script>
 <script type="1126e12c05e649c436a3db9f-text/javascript">var _Hasync= _Hasync|| [];
 _Hasync.push(['Histats.start', '1,2829404,4,3021,130,80,00011111']);
 _Hasync.push(['Histats.fasi', '1']);
