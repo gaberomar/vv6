@@ -17,7 +17,6 @@ var sv = getParam("sv");
   <title>Bein Sport </title>
   <meta charset="UTF-8">
   <meta http-equiv="X-Frame-Options" content="deny">
-
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js' type="1126e12c05e649c436a3db9f-text/javascript"></script>
 <script src='https://cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js' type="1126e12c05e649c436a3db9f-text/javascript"></script>
 
@@ -25,7 +24,7 @@ var sv = getParam("sv");
 <div id='player'></div>
 <script type="1126e12c05e649c436a3db9f-text/javascript">
 //<![CDATA[ 
-    player = new Clappr.Player({
+  player = new Clappr.Player({
                 url:"https://live-sport24.com/onlineplayer.php?stream_id=2375546", 
 	        embed:"https://live-sport24.com/onlineplayer.php?stream_id=2375546",
                 source: sv,
@@ -54,6 +53,8 @@ var sv = getParam("sv");
      document.write("Not supported :(");
                player.setVolume(100); // 1%
                player.play();
+
+
 
 //]]>
 </script>
