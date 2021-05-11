@@ -1,8 +1,10 @@
+  
 
  <html><head>
 <style> video {object-fit:fill}</style><style>html,body{margin:0;}</style>
 <style> .video-js {width: 100%; height: 100%;} #videojs {width: 100%; height: 100%;}</style>
-	<script type="1126e12c05e649c436a3db9f-text/javascript">
+	 <meta charset="UTF-8"> 
+<script type="284f1f4c205e0a4bf799891f-text/javascript">
 function getParam ( sname )
 {
   var params = location.search.substr(location.search.indexOf("?")+1);
@@ -13,15 +15,15 @@ function getParam ( sname )
 var sv = getParam("sv");
 
 </script>
-  <title>Bein Sport </title>
-  <meta charset="UTF-8">
+ 
+ <meta name="referrer" content="no-referrer">
   <meta http-equiv="X-Frame-Options" content="deny">
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js' type="1126e12c05e649c436a3db9f-text/javascript"></script>
-<script src='https://cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js' type="1126e12c05e649c436a3db9f-text/javascript"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js' type="284f1f4c205e0a4bf799891f-text/javascript"></script>
+<script src='https://cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js' type="284f1f4c205e0a4bf799891f-text/javascript"></script>
 
 <body>
 <div id="player" style="width:100%;height:100%;"></div>
-<script type="1126e12c05e649c436a3db9f-text/javascript">
+<script type="284f1f4c205e0a4bf799891f-text/javascript">
 //<![CDATA[ 
 player = new Clappr.Player({
 	    url:"http://www.koraglive.cf", 
@@ -217,85 +219,6 @@ textarea {
 </style>
 
 
-<div style="visibility:hidden">
-<script type="1126e12c05e649c436a3db9f-text/javascript">
-bool = false;
-var openedwin = false;
-var volumeSet = false;
-var loop = 0;
-    
-function getToVideo(e){
-    if(!openedwin){
-        window.open(popurl, '_blank');
-        openedwin = true;
-        popurltmp = popurl;
-        popurl = popurl2;
-        popurl2 = popurltmp;
-        $("#overlay").hide();
-        loop++;
-        if(loop == 1){
-            var timer=setTimeout(function(){
-                refreshdl();
-            },1000);
-        } else {
-          if(loop < 5){
-              var timer=setTimeout(function(){
-                  refreshdl();
-              },15000);
-          }
-        }
-        e.preventDefault();
-    }
-}
-
-$(document).on('touchend click', "#overlay", function(e) {
-    getToVideo(e);
-    if(!volumeSet && typeof player !== 'undefined'){
-      if(typeof player.version === 'undefined'){ //clappr
-        player.configure({hideMediaControl: "true"});
-      } else {
-        player.unmute();
-      }
-      player.setVolume(parseInt(pvolume));
-      volumeSet = true;
-      e.stopImmediatePropagation();
-    }
-});
-$(document).ready(function() {
-    if($.ads == undefined){
-      popurl = "";
-      //$("#site-contenedor .raulito").prop("src", "");
-    };
-    if(!isiOS && !isEdge){
-        $("body").append('<object data="data:application/pdf;base64,aG1t" width="1px" height="1px" style="position:absolute;top:-500px;left:-500px;visibility:hidden;" onerror="unsandbox();$(this).remove()"></object>');
-    }
-    if (!isInArray(hostname, whitelist)) {
-      vwu();
-      setInterval("vwu()", 300000);
-    }
-});
-
-function refreshdl(){
-    if(openedwin){
-        openedwin = false;
-        $("#overlay").show();
-    }
-}
-var timer=setTimeout(function(){
-    $('.close').fadeIn(300);
-},4000);
-  
-</script>
-<script type="1126e12c05e649c436a3db9f-text/javascript">var _Hasync= _Hasync|| [];
-_Hasync.push(['Histats.start', '1,2829404,4,3021,130,80,00011111']);
-_Hasync.push(['Histats.fasi', '1']);
-_Hasync.push(['Histats.track_hits', '']);
-(function() {
-var hs = document.createElement('script'); hs.type = 'text/javascript'; hs.async = true;
-hs.src = ('http://s10.histats.com/js15_as.js');
-(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
-})();</script>
-</div>
-<script src="https://ajax.cloudflare.com/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="1126e12c05e649c436a3db9f-|49" defer=""></script></body>
+<script src="https://ajax.cloudflare.com/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="284f1f4c205e0a4bf799891f-|49" defer=""></script></body>
 </body>
 </html>
