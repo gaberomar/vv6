@@ -87,13 +87,15 @@ margin-left: -50px!important;
   
 	<script type="text/javascript">
 
-		var ua = navigator.userAgent.toLowerCase();
-	      
-	   if(ua.indexOf("iphone") != -1 || ua.indexOf("ipad") != -1 || (ua.indexOf("android") != -1)){
+var ua = navigator.userAgent.toLowerCase();
+ if(ua.indexOf("iphone") != -1 || ua.indexOf("ipad") != -1 || (ua.indexOf("android") != -1)){
 var player = new Playerjs({id:"vid", file: sv,
-},
+
 });			
 
+ }else{
+var player = new Playerjs({id:"vid", file: sv,});
+   }
 </script>	
 
 	</div>
